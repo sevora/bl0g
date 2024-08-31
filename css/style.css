@@ -128,6 +128,7 @@ footer {
     transition-property: bottom;
     transition-duration: 1s;
     transition-delay: 1s;
+    bottom: 0px;
 }
 
 #full-swing-ahead-canvas.enter {
