@@ -1,4 +1,4 @@
-export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => void, onNavigateRoute?: (page: HTMLElement) => void) {
+export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => void, onNavigateRoute?: (page: HTMLElement, firstLoad?: boolean) => void) {
     /**
      * These are the DOM elements necessary for 
      * this to work. Technically this could be rewritten
@@ -21,7 +21,7 @@ export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => voi
     /**
      * 
      */
-    function navigateRoute(route: string) {
+    function navigateRoute(route: string, firstLoad?: boolean) {
         const page = pages[route];
         if (!page) return;
 
@@ -37,7 +37,7 @@ export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => voi
         page.style.removeProperty('display');
 
         if (onNavigateRoute)
-            onNavigateRoute(page);
+            onNavigateRoute(page, firstLoad);
 
         /**
          * 
@@ -51,7 +51,8 @@ export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => voi
     function onLoadCorrectPageFromRoute() {
         const { pathname } = window.location;
         const page = pages[pathname];
-        if (page) navigateRoute(pathname);
+        if (page) 
+            navigateRoute(pathname, true);
     }
 
     onLoadCorrectPageFromRoute();

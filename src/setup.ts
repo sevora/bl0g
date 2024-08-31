@@ -42,7 +42,7 @@ export function onSetupPage(page: HTMLElement) {
  * 
  * @param page 
  */
-export function onNavigateRoute(page: HTMLElement) {
+export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
     const video = page.querySelector('video[data-chroma-key]') as HTMLVideoElement;
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
     const transition = transitions[page.dataset.transitionFunction];
@@ -59,7 +59,7 @@ export function onNavigateRoute(page: HTMLElement) {
     if (video) {
         video.currentTime = 0;
         video.play()
-            .catch(() => transition && transition());   
+            .catch(() => firstLoad && transition && transition());   
     }
     
 }
