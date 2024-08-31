@@ -67,9 +67,11 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
         page.style.removeProperty('display');
         video.currentTime = 0;
         
-        if (!isFirefox)
-            video.play()
-                .catch(() => firstLoad && transition && transition());   
+        if (firstLoad)
+            transition();
+        else 
+            if (!isFirefox)
+                video.play();
     }
     
 }
