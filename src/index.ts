@@ -12,7 +12,7 @@ const { navigateRoute } = setupSinglePage(onSetupPage, onNavigateRoute);
  */
 const navigation = document.querySelector('nav') as HTMLElement;
 const navigationAnchors = document.querySelectorAll('nav a') as NodeListOf<HTMLAnchorElement>;
-const sections = document.querySelectorAll('#articles, #authors, #about') as NodeListOf<HTMLElement>;
+const sections = document.querySelectorAll('#posts, #authors, #about') as NodeListOf<HTMLElement>;
 const { hash } = window.location;
 
 let lastY = 0;
