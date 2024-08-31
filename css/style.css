@@ -124,8 +124,18 @@ footer {
     align-items: center;
 }
 
-#full-swing-ahead canvas {
-    transition-delay: 0.3s;
+#full-swing-ahead-canvas {
+    transition-property: bottom;
+    transition-duration: 1s;
+    transition-delay: 1s;
+}
+
+#full-swing-ahead-canvas.enter {
+    bottom: 0px;
+}
+
+#full-swing-ahead-canvas.exit {
+    bottom: -100vh;
 }
 
 .card {
@@ -184,8 +194,6 @@ footer {
 }
 
 .post canvas {
-    transition-property: opacity;
-    transition-duration: 0.2s;
     pointer-events: none;
 }
 

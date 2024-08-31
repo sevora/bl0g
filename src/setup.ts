@@ -27,7 +27,8 @@ export function onSetupPage(page: HTMLElement) {
         attachChromaKey(video, canvas, [0, 255, 0], 0.75);
 
         video.addEventListener('ended', function () {
-            canvas.style.setProperty('opacity', '0');
+            canvas.classList.remove('enter');
+            canvas.classList.add('exit');
 
             if (transition)
                 transition();
@@ -50,9 +51,11 @@ export function onNavigateRoute(page: HTMLElement) {
      * 
      * 
      */
-    if (canvas)
-        canvas.style.setProperty('opacity', '1');
-
+    if (canvas) {
+        canvas.classList.remove('exit');
+        canvas.classList.add('enter');
+    }
+ 
     if (video) {
         video.currentTime = 0;
         video.play()
