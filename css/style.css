@@ -23,7 +23,7 @@ nav {
     background-color: var(--background-color);
     box-sizing: border-box;
     
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,6 +66,11 @@ nav a, nav a:hover, nav a:visited, nav a:focus, nav a:active  {
 
 nav a.active {
     font-weight: 600;
+}
+
+a, a:visited {
+    color: var(--foreground-color);
+    word-break: break-all;
 }
 
 footer {
@@ -246,6 +251,10 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
+    nav { 
+        font-size: 1.7rem;
+    }
+
     .profile {
         flex-direction: row;
     }
