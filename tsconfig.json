@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "outDir": "./assets/",
+      "noImplicitAny": true,
+      "module": "NodeNext",
+      "target": "es5",
+      "allowJs": true,
+      "moduleResolution": "NodeNext"
+    }
+  }

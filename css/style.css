@@ -1,0 +1,253 @@
+:root {
+    --background-color: #f9f0f0;
+    --foreground-color: #111;
+
+    --badge-color: #e7e2e2;
+    --hover-color: #dcd3d3;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+    color: var(--foreground-color);
+    background-color: var(--background-color);
+    font-family: Sono, monospace;
+}
+
+nav {
+    width: 100%;
+    padding: 15px 30px;
+    background-color: var(--background-color);
+    
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    transition-property: padding;
+    transition-duration: 0.3s;
+    z-index: 100;
+}
+
+nav.minimize {
+    padding: 5px 30px;
+}
+
+nav a {
+    padding: 5px 10px;
+    border-radius: 1rem;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+nav.minimize a {
+    padding: 5px 10px;
+}
+
+nav a:hover {
+    background-color: var(--hover-color);
+    cursor: pointer;
+}
+
+nav a, nav a:hover, nav a:visited, nav a:focus, nav a:active  {
+    text-decoration: none;
+    color: inherit;
+    outline: 0;
+}
+
+nav a.active {
+    font-weight: 600;
+}
+
+footer {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.shadow {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+#home {
+    margin: auto;
+}
+
+#highlights {
+    /* background-color: #ebe4e4; */
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 25rem); /* (2) */
+    grid-gap: 1rem; 
+    
+    justify-content: center; 
+    align-content: flex-start;
+}
+
+#authors {
+    width: 100%;
+    padding: 0 30px;
+
+    max-width: 700px;
+    margin: 20vh auto;
+
+    display: flex;
+    flex-direction: column;
+    
+    gap: 60px;
+}
+
+#about {
+    min-height: 110vh;
+    max-width: 900px;
+    padding: 20px;
+
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#full-swing-ahead canvas {
+    transition-delay: 0.3s;
+}
+
+.card {
+    width: 25rem;
+    height: 19rem;
+    background-color: var(--background-color);
+    padding: 30px 20px 0px 20px;
+
+    border-radius: 10px;
+    border: 2px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card:hover {
+    border: 2px solid var(--hover-color);
+}
+
+.card .heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card .byline {
+    font-size: 0.9rem;
+    width: fit-content;
+    font-weight: 400;
+    padding: 5px 10px;
+    background-color: var(--badge-color);
+    border-radius: 10px;
+}
+
+.card .hook {
+    margin-top: 10px;
+    height: 50%;
+}
+
+.card .read-post {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    color: blue;
+    
+    align-self: flex-end;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.post {
+    margin: auto;
+    max-width: 700px;
+    padding: 30px;
+}
+
+.post canvas {
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    pointer-events: none;
+}
+
+.post .title {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.post .byline {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.post .content {
+    font-weight: 400;
+}
+
+.image-container {
+    margin: 30px 0;
+}
+
+.image-container .label {
+    padding: 10px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.image-container img {
+    border-radius: 20px;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    align-items: center;
+    gap: 20px;
+}
+
+.profile .picture {
+    flex-shrink: 0;
+    align-self: self-start;
+
+    width: 10rem;
+    height: 10rem;
+    border: 2px solid var(--badge-color);
+    border-radius: 50%;
+}
+
+.profile .details {
+
+}
+
+.heading {
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.center {
+    text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+    .profile {
+        flex-direction: row;
+    }
+
+    .profile .picture {
+        align-self: center;
+    }
+}
