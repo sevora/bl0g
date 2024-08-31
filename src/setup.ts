@@ -21,7 +21,7 @@ const transitions: { [key: string]: () => void } = {
 export function onSetupPage(page: HTMLElement) {
     const video = page.querySelector('video[data-chroma-key]') as HTMLVideoElement;
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
-    const effect = transitions[page.dataset.transitionFunction];
+    const transition = transitions[page.dataset.transitionFunction];
 
     if (video && canvas) {
         attachChromaKey(video, canvas, [0, 255, 0], 0.75);
@@ -29,8 +29,8 @@ export function onSetupPage(page: HTMLElement) {
         video.addEventListener('ended', function () {
             canvas.style.setProperty('opacity', '0');
 
-            if (effect)
-                effect();
+            if (transition)
+                transition();
 
             video.currentTime = 0;
         });
@@ -44,7 +44,7 @@ export function onSetupPage(page: HTMLElement) {
 export function onNavigateRoute(page: HTMLElement) {
     const video = page.querySelector('video[data-chroma-key]') as HTMLVideoElement;
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
-    const effect = transitions[page.dataset.transitionFunction];
+    const transition = transitions[page.dataset.transitionFunction];
 
     /**
      * 
@@ -55,12 +55,8 @@ export function onNavigateRoute(page: HTMLElement) {
 
     if (video) {
         video.currentTime = 0;
-
-        try {
-            video.play();
-        } catch {
-            effect();
-        }
+        video.play()
+            .catch(() => transition && transition());   
     }
     
 }
