@@ -18,6 +18,11 @@ const transitions: { [key: string]: () => void } = {
 /**
  * 
  */
+const isFirefox = /Android.+Firefox\//.test(navigator.userAgent);
+
+/**
+ * 
+ */
 export function onSetupPage(page: HTMLElement) {
     const video = page.querySelector('video[data-chroma-key]') as HTMLVideoElement;
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
@@ -58,8 +63,10 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
  
     if (video) {
         video.currentTime = 0;
-        video.play()
-            .catch(() => firstLoad && transition && transition());   
+        
+        if (!isFirefox)
+            video.play()
+                .catch(() => firstLoad && transition && transition());   
     }
     
 }
