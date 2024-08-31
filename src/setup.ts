@@ -52,6 +52,8 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
     const transition = transitions[page.dataset.transitionFunction];
 
+    document.documentElement.removeAttribute('style');
+    
     /**
      * 
      * 
@@ -62,6 +64,7 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
     }
  
     if (video) {
+        page.style.removeProperty('display');
         video.currentTime = 0;
         
         if (!isFirefox)

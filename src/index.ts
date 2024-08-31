@@ -37,7 +37,6 @@ function handleClickNavigation(element: HTMLElement | EventTarget) {
         anchor.classList[anchor === element ? 'add' : 'remove']('active')
     );
 
-    document.documentElement.removeAttribute('style');
     navigateRoute('/');
 }
 
@@ -45,15 +44,21 @@ function handleClickNavigation(element: HTMLElement | EventTarget) {
 /**
  * 
  */
-window.addEventListener('scroll', () => {
-    navigation.classList[window.scrollY > 0 ? 'add' : 'remove']('shadow');
-
+function detectActiveNavigationAnchor() {
     sections.forEach((container, index) => {
         if (window.scrollY >= container.offsetTop - 10 && window.location.pathname === '/')
             navigationAnchors.forEach(anchor =>
                 anchor.classList[anchor === navigationAnchors[index] ? 'add' : 'remove']('active')
             );
     });
+}
+
+/**
+ * 
+ */
+window.addEventListener('scroll', () => {
+    navigation.classList[window.scrollY > 0 ? 'add' : 'remove']('shadow');
+    detectActiveNavigationAnchor();
 
     /**
      * 
@@ -64,3 +69,4 @@ window.addEventListener('scroll', () => {
 
 navigationAnchors.forEach(anchor => anchor.addEventListener('click', event => handleClickNavigation(event.currentTarget)));
 navigationAnchors.forEach(anchor => (anchor.hash === hash || anchor.hash === '#home' && hash.length === 0) && anchor.classList.add('active'));
+detectActiveNavigationAnchor();

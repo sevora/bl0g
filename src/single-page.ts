@@ -48,16 +48,19 @@ export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => voi
     /**
      * 
      */
-    function onLoadCorrectPageFromRoute() {
+    function loadCorrectPageFromRoute() {
         const { pathname } = window.location;
         const page = pages[pathname];
         if (page) 
             navigateRoute(pathname, true);
     }
 
-    onLoadCorrectPageFromRoute();
+    window.addEventListener('popstate', loadCorrectPageFromRoute);
+
     if (onSetupPage) 
         Object.values(pages).forEach(onSetupPage);
 
+    loadCorrectPageFromRoute();
+    
     return { navigateRoute };
 }
