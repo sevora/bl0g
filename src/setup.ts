@@ -35,7 +35,7 @@ export function onSetupPage(page: HTMLElement) {
             canvas.classList.remove('enter');
             canvas.classList.add('exit');
 
-            if (transition)
+            if (transition && window.location.pathname == page.dataset.route)
                 transition();
 
             video.currentTime = 0;
