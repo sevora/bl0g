@@ -171,13 +171,16 @@ footer {
 }
 
 #thumbs-canvas {
-    transition-property: opacity;
-    transition-delay: 1s;
+    transition-property: left;
     transition-duration: 1s;
 }
 
+#thumbs-canvas.enter {
+    left: 0;
+}
+
 #thumbs-canvas.exit {
-    opacity: 0;
+    left: -200vh;
 }
 
 #captain-america-canvas {
