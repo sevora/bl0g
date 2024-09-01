@@ -12,7 +12,7 @@ const { navigateRoute } = setupSinglePage(onSetupPage, onNavigateRoute);
  */
 const navigation = document.querySelector('nav') as HTMLElement;
 const navigationAnchors = document.querySelectorAll('nav a') as NodeListOf<HTMLAnchorElement>;
-const sections = document.querySelectorAll('#posts, #authors, #about') as NodeListOf<HTMLElement>;
+const sections = document.querySelectorAll('#posts, #writers, #about') as NodeListOf<HTMLElement>;
 const { hash } = window.location;
 
 let lastY = 0;
@@ -24,6 +24,13 @@ function handleClickCard(event: MouseEvent) {
     event.stopPropagation();
     const card = event.currentTarget as HTMLElement;
     navigateRoute(card.dataset.displayPage);
+    
+    /**
+     * 
+     */
+    navigationAnchors.forEach(anchor =>
+        anchor.classList.remove('active')
+    );
 }
 
 document.querySelectorAll('.card').forEach(card => card.addEventListener('click', handleClickCard));

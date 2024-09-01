@@ -18,7 +18,12 @@ const transitions: { [key: string]: () => void } = {
 /**
  * 
  */
-const isFirefox = /Android.+Firefox\//.test(navigator.userAgent);
+let transitionTimeouts: NodeJS.Timeout[] = [];
+
+/**
+ * 
+ */
+const isFirefoxMobile = /Android.+Firefox\//.test(navigator.userAgent);
 
 /**
  * 
@@ -26,6 +31,7 @@ const isFirefox = /Android.+Firefox\//.test(navigator.userAgent);
 export function onSetupPage(page: HTMLElement) {
     const video = page.querySelector('video[data-chroma-key]') as HTMLVideoElement;
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
+    const duration = page.dataset.transitionDelay;
     const transition = transitions[page.dataset.transitionFunction];
 
     if (video && canvas) {
@@ -35,25 +41,29 @@ export function onSetupPage(page: HTMLElement) {
             canvas.classList.remove('enter');
             canvas.classList.add('exit');
 
-            if (transition && window.location.pathname == page.dataset.route)
+            if (transition && !duration && window.location.pathname == page.dataset.route)
                 transition();
-
-            video.currentTime = 0;
         });
     }
 }
 
 /**
  * 
- * @param page 
+ * 
  */
 export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
     const video = page.querySelector('video[data-chroma-key]') as HTMLVideoElement;
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
+    const duration = page.dataset.transitionDelay;
     const transition = transitions[page.dataset.transitionFunction];
 
     document.documentElement.removeAttribute('style');
-    
+
+    /**
+     * 
+     */
+    transitionTimeouts.forEach(clearTimeout);
+
     /**
      * 
      * 
@@ -62,16 +72,31 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
         canvas.classList.remove('exit');
         canvas.classList.add('enter');
     }
- 
+
+    /**
+     * 
+     */
     if (video) {
         page.style.removeProperty('display');
         video.currentTime = 0;
-        
-        if (firstLoad)
+
+        if (firstLoad && transition)
             transition();
-        else 
-            if (!isFirefox)
-                video.play();
+        else if (!isFirefoxMobile) 
+            video.play().then(function () {
+                if (!duration) return;
+                
+                /**
+                 * 
+                 */
+                const id = setTimeout(function () {
+                    if (transition && window.location.pathname == page.dataset.route)
+                        transition();
+                    }, parseFloat(duration)
+                );
+
+                transitionTimeouts.push(id);
+            });
     }
-    
+
 }

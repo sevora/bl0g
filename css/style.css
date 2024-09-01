@@ -87,6 +87,21 @@ footer {
     margin: auto;
 }
 
+#banner {
+    width: fit-content;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: #111;
+    color: #f9f0f0;
+    padding: 10px 20px;
+    
+    border-radius: 10px;
+    
+}
+
 #highlights {
     /* background-color: #ebe4e4; */
     padding: 20px;
@@ -99,12 +114,12 @@ footer {
     align-content: flex-start;
 }
 
-#authors {
+#writers {
     width: 100%;
     padding: 0 30px;
 
-    max-width: 700px;
-    margin: 20vh auto;
+    max-width: 800px;
+    margin: 10vh auto;
 
     display: flex;
     flex-direction: column;
@@ -141,7 +156,7 @@ footer {
 
 .card {
     width: 25rem;
-    height: 19rem;
+    height: 18rem;
     background-color: var(--background-color);
     padding: 30px 20px 0px 20px;
 
@@ -164,7 +179,7 @@ footer {
     font-weight: 600;
 }
 
-.card .byline {
+.card .byline, .byline {
     font-size: 0.9rem;
     width: fit-content;
     font-weight: 400;
@@ -240,14 +255,19 @@ footer {
     flex-shrink: 0;
     align-self: self-start;
 
-    width: 10rem;
-    height: 10rem;
-    border: 2px solid var(--badge-color);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 13rem;
+    height: 13rem;
+    border: 4px solid var(--badge-color);
     border-radius: 50%;
 }
 
 .profile .details {
-
+    width: 100%;
+    align-self: flex-start;
 }
 
 .heading {
@@ -271,4 +291,8 @@ footer {
     .profile .picture {
         align-self: center;
     }
+
+    .profile .details {
+        width: 60%;
+    }    
 }
