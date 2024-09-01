@@ -80,24 +80,28 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
         page.style.removeProperty('display');
         video.currentTime = 0;
 
-        console.log(video)
-        if (firstLoad && transition)
-            transition();
-        else if (!isFirefoxMobile) 
-            video.play().then(function () {
-                if (!duration) return;
-                
-                /**
-                 * 
-                 */
-                const id = setTimeout(function () {
-                    if (transition && window.location.pathname == page.dataset.route)
-                        transition();
-                    }, parseFloat(duration)
-                );
-
-                transitionTimeouts.push(id);
-            });
+        /**
+         * 
+         */
+        if (!isFirefoxMobile) {
+            if (firstLoad && transition)
+                transition();
+            else
+                video.play().then(function () {
+                    if (!duration) return;
+                    
+                    /**
+                     * 
+                     */
+                    const id = setTimeout(function () {
+                        if (transition && window.location.pathname == page.dataset.route)
+                            transition();
+                        }, parseFloat(duration)
+                    );
+    
+                    transitionTimeouts.push(id);
+                });
+        }
     }
 
 }
