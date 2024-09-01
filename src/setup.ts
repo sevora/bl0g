@@ -37,6 +37,21 @@ export function onSetupPage(page: HTMLElement) {
     if (video && canvas) {
         attachChromaKey(video, canvas, [0, 255, 0], 0.75);
 
+        video.addEventListener('play', function() {
+            if (!duration) return;
+                    
+            /**
+             * 
+             */
+            const id = setTimeout(function () {
+                if (transition && window.location.pathname == page.dataset.route)
+                    transition();
+                }, parseFloat(duration)
+            );
+
+            transitionTimeouts.push(id);
+        });
+
         video.addEventListener('ended', function () {
             canvas.classList.remove('enter');
             canvas.classList.add('exit');
@@ -58,7 +73,7 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
     const transition = transitions[page.dataset.transitionFunction];
 
     document.documentElement.removeAttribute('style');
-
+    
     /**
      * 
      */
@@ -87,20 +102,7 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
             if (firstLoad && transition)
                 transition();
             else
-                video.play().then(function () {
-                    if (!duration) return;
-                    
-                    /**
-                     * 
-                     */
-                    const id = setTimeout(function () {
-                        if (transition && window.location.pathname == page.dataset.route)
-                            transition();
-                        }, parseFloat(duration)
-                    );
-    
-                    transitionTimeouts.push(id);
-                });
+                video.play();
         }
     }
 
