@@ -35,7 +35,7 @@ export function onSetupPage(page: HTMLElement) {
     const transition = transitions[page.dataset.transitionFunction];
 
     if (video && canvas) {
-        attachChromaKey(video, canvas, [0, 255, 0], 0.72);
+        attachChromaKey(video, canvas, [0, 255, 0], 0.75);
 
         video.addEventListener('ended', function () {
             canvas.classList.remove('enter');
