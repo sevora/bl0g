@@ -1,6 +1,7 @@
 
 import setupSinglePage from './single-page';
 import { onSetupPage, onNavigateRoute } from './setup';
+import attachChromaKey from './chroma';
 
 /**
  * 
@@ -77,3 +78,18 @@ window.addEventListener('scroll', () => {
 navigationAnchors.forEach(anchor => anchor.addEventListener('click', event => handleClickNavigation(event.currentTarget)));
 navigationAnchors.forEach(anchor => (anchor.hash === hash || anchor.hash === '#home' && hash.length === 0) && anchor.classList.add('active'));
 detectActiveNavigationAnchor();
+
+const specialButton = document.querySelector('#special-button');
+const specialCanvas = document.querySelector('#special-canvas') as HTMLCanvasElement;
+const specialVideo = document.querySelector('#special-video') as HTMLVideoElement;
+
+attachChromaKey(specialVideo, specialCanvas, [0, 255, 0], 0.7);
+specialButton.addEventListener('click', () => specialVideo.play());
+
+specialVideo.addEventListener('play', () => {
+    specialCanvas.style.removeProperty('display');
+});
+
+specialVideo.addEventListener('ended', () => {
+    specialCanvas.style.display = 'none';
+})

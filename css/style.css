@@ -79,6 +79,22 @@ footer {
     text-align: center;
 }
 
+ button { 
+    color: var(--background-color);
+    background-color: var(--foreground-color);
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition-property: transform;
+    transition-duration: 0.5s;
+ }
+
+ button:hover {
+    transform: scale(0.5);
+ }
+
+
 .shadow {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
@@ -152,6 +168,51 @@ footer {
 
 #full-swing-ahead-canvas.exit {
     bottom: -100vh;
+}
+
+#captain-america-canvas {
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+#captain-america-canvas.exit {
+    opacity: 0;
+}
+
+#kyrie-canvas {
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+#kyrie-canvas.exit {
+    opacity: 0;
+}
+
+#monster-hunter-canvas {
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+#monster-hunter-canvas.exit {
+    opacity: 0;
+}
+
+#gojo-canvas {
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+#gojo-canvas.exit {
+    opacity: 0;
+}
+
+#lebron-canvas {
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+#lebron-canvas.exit {
+    opacity: 0;
 }
 
 .card {

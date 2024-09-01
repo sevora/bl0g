@@ -43,13 +43,15 @@
     </nav>
 
     <div class="page" data-route="/">
-        <!-- Spacer  -->
-        <div style="height: 80px;"></div>
-        <div id="banner">
-            bl0g.pro by Ralph and Team
-        </div>
-
         <section id="posts">
+            <!-- Spacer  -->
+            <div style="height: 80px;"></div>
+
+            <!-- Banner -->
+            <div id="banner">
+                bl0g.pro by Ralph and Team
+            </div>
+            
             <!-- Blog post highlights -->
             <div id="highlights">
                 <div class="card" data-display-page="/a-beginners-guide-to-indie">
@@ -225,7 +227,7 @@
         <div style="height: 80px;"></div>
 
         <!-- Optional video transition -->
-        <video preload="metadata" src="/assets/videos/berserk.mp4" width="480" height="480" style="display: none;" muted
+        <video preload="auto" src="/assets/videos/berserk.mp4" width="480" height="480" style="display: none;" muted
             data-chroma-key></video>
         <canvas id="full-swing-ahead-canvas" style="position: fixed; left: 0; right: 0; width: 480px; margin: auto;"
             data-chroma-key></canvas>
@@ -486,6 +488,11 @@
 
     <!-- I Love You 3000 -->
     <div class="page post" style="display: none;" data-route="/i-love-you-3000">
+        <video preload="auto" src="/assets/videos/captain.mp4" width="480" height="480" style="display: none;" muted
+        data-chroma-key></video>
+        <canvas id="captain-america-canvas" style="position: fixed; right: 0; bottom: 0; width: 480px; margin: auto;"
+            data-chroma-key></canvas>
+            
         <!-- Spacer  -->
         <div style="height: 80px;"></div>
 
@@ -578,6 +585,11 @@
 
     <!-- Basket and Bonds -->
     <div class="post page" data-route="/basket-and-bonds">
+        <video preload="auto" src="/assets/videos/kyrie.mp4" width="480" height="480" style="display: none;" muted
+        data-chroma-key></video>
+        <canvas id="kyrie-canvas" style="position: fixed; right: 0; bottom: 0; width: 480px; margin: auto;"
+            data-chroma-key></canvas>
+
         <!-- Spacer  -->
         <div style="height: 80px;"></div>
 
@@ -651,6 +663,11 @@
 
     <!-- Monster Hunter Best Action RPG -->
     <div class="page post" data-route="/monster-hunter-best-action-rpg">
+        <video preload="auto" src="/assets/videos/dragon.mp4" width="480" height="480" style="display: none;" muted
+        data-chroma-key></video>
+        <canvas id="monster-hunter-canvas" style="position: fixed; left: 0; bottom: 0; width: 480px; margin: auto;"
+            data-chroma-key></canvas>
+
         <!-- Spacer  -->
         <div style="height: 80px;"></div>
 
@@ -712,6 +729,11 @@
 
     <!-- Gojo Glazer -->
     <div class="page post" data-route="/go/jo">
+        <video preload="auto" src="/assets/videos/gojo.mp4" width="480" height="480" style="display: none;" muted
+        data-chroma-key></video>
+        <canvas id="gojo-canvas" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 480px; margin: auto;"
+            data-chroma-key></canvas>
+
         <!-- Spacer  -->
         <div style="height: 80px;"></div>
 
@@ -799,6 +821,11 @@
     </div>
 
     <div class="page post" data-route="/lebron-james-king-of-nba">
+        <video preload="auto" src="/assets/videos/lebron.mp4" width="480" height="480" style="display: none;" muted
+        data-chroma-key></video>
+        <canvas id="lebron-canvas" style="position: fixed; left: 0; right: 0; bottom: 0; width: 480px; margin: auto;"
+            data-chroma-key></canvas>
+
         <!-- Spacer  -->
         <div style="height: 80px;"></div>
 
@@ -900,12 +927,17 @@
 
     <!-- How this blog site was made -->
     <div class="page post" data-route="/creation">
+            <video preload="auto" id="special-video" src="/assets/videos/special.mp4" width="480" height="480" style="display: none;" muted></video>
+            <canvas id="special-canvas" style="position: fixed; left: 0; right: 0; bottom: 0; width: 720px; margin: auto;"></canvas>
+
           <!-- Spacer  -->
           <div style="height: 80px;"></div>
 
           <!-- Actual content -->
           <h1 class="title">How this blog site was made</h1>
           <h2 class="byline">by Ralph and team</h2>
+          <button id="special-button" style="margin-bottom: 10px;">do NOT click me</button>
+
           <p class="content">
             You might be wondering how this website was made. Or maybe, how is it possible 
             that whenever I click any post, it instantly loads it up into the screen almost instantaneously.

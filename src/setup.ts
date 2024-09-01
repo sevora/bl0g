@@ -35,7 +35,7 @@ export function onSetupPage(page: HTMLElement) {
     const transition = transitions[page.dataset.transitionFunction];
 
     if (video && canvas) {
-        attachChromaKey(video, canvas, [0, 255, 0], 0.75);
+        attachChromaKey(video, canvas, [0, 255, 0], 0.72);
 
         video.addEventListener('ended', function () {
             canvas.classList.remove('enter');
@@ -80,6 +80,7 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
         page.style.removeProperty('display');
         video.currentTime = 0;
 
+        console.log(video)
         if (firstLoad && transition)
             transition();
         else if (!isFirefoxMobile) 
