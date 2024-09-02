@@ -37,6 +37,9 @@ export function onSetupPage(page: HTMLElement) {
     if (video && canvas) {
         attachChromaKey(video, canvas, [0, 255, 0], 0.75);
 
+        /**
+         * 
+         */
         video.addEventListener('play', function() {
             if (!duration) return;
                     
@@ -52,6 +55,9 @@ export function onSetupPage(page: HTMLElement) {
             transitionTimeouts.push(id);
         });
 
+        /**
+         * 
+         */
         video.addEventListener('ended', function () {
             canvas.classList.remove('enter');
             canvas.classList.add('exit');
