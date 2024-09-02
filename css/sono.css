@@ -37,12 +37,5 @@
 @font-face {
     font-family: Sono;
     font-weight: 800;
-    src: url(fonts/sono/web/Sono-Bold.woff2);
-}
-
-
-@font-face {
-    font-family: Sono;
-    font-weight: 900;
     src: url(fonts/sono/web/Sono-ExtraBold.woff2);
 }
