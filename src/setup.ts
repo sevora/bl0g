@@ -1,5 +1,7 @@
 import attachChromaKey from './chroma';
 
+const space = document.querySelector('#space') as HTMLElement;
+
 /**
  * 
  */
@@ -7,11 +9,18 @@ const transitions: { [key: string]: () => void } = {
     /**
      * 
      */
-    'darkness': function darkness() {
+    'darkness': function() {
         document.documentElement.style.setProperty('--background-color', '#000');
         document.documentElement.style.setProperty('--foreground-color', '#f9f0f0');
         document.documentElement.style.setProperty('--badge-color', '#5e5e5e');
         document.documentElement.style.setProperty('--hover-color', '#4e4e4e');
+    },
+    'stars': function() {
+        document.documentElement.style.setProperty('--background-color', '#000');
+        document.documentElement.style.setProperty('--foreground-color', '#f9f0f0');
+        document.documentElement.style.setProperty('--badge-color', '#5e5e5e');
+        document.documentElement.style.setProperty('--hover-color', '#4e4e4e');
+        space.style.removeProperty('display');
     }
 }
 
@@ -75,7 +84,6 @@ export function onSetupPage(page: HTMLElement) {
 export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
     const video = page.querySelector('video[data-chroma-key]') as HTMLVideoElement;
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
-    const duration = page.dataset.transitionDelay;
     const transition = transitions[page.dataset.transitionFunction];
 
     document.documentElement.removeAttribute('style');
@@ -84,6 +92,13 @@ export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
      * 
      */
     transitionTimeouts.forEach(clearTimeout);
+
+    /**
+     * Hard-coded cancellation of effects.
+     */
+    if (window.location.pathname != '/go/jo') {
+        space.style.setProperty('display', 'none');
+    }
 
     /**
      * 
