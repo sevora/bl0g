@@ -6,17 +6,20 @@ import attachChromaKey from './chroma';
 /**
  * 
  */
-const { navigateRoute } = setupSinglePage(onSetupPage, onNavigateRoute);
-
-/**
- * 
- */
 const navigation = document.querySelector('nav') as HTMLElement;
 const navigationAnchors = document.querySelectorAll('nav a') as NodeListOf<HTMLAnchorElement>;
 const sections = document.querySelectorAll('#posts, #writers, #about') as NodeListOf<HTMLElement>;
 const { hash } = window.location;
 
 let lastY = 0;
+
+/**
+ * 
+ */
+const { navigateRoute } = setupSinglePage(onSetupPage, (page, firstLoad) => { 
+    onNavigateRoute(page, firstLoad);
+    detectActiveNavigationAnchor();
+});
 
 /**
  * 
@@ -35,19 +38,6 @@ function handleClickCard(event: MouseEvent) {
 }
 
 document.querySelectorAll('.card').forEach(card => card.addEventListener('click', handleClickCard));
-
-
-/**
- *  
- */
-function handleClickNavigation(element: HTMLElement | EventTarget) {
-    navigationAnchors.forEach(anchor =>
-        anchor.classList[anchor === element ? 'add' : 'remove']('active')
-    );
-
-    navigateRoute('/');
-}
-
 
 /**
  * 
@@ -75,7 +65,7 @@ window.addEventListener('scroll', () => {
     lastY = window.scrollY;
 });
 
-navigationAnchors.forEach(anchor => anchor.addEventListener('click', event => handleClickNavigation(event.currentTarget)));
+navigationAnchors.forEach(anchor => anchor.addEventListener('click', _event => navigateRoute('/')));
 navigationAnchors.forEach(anchor => (anchor.hash === hash || anchor.hash === '#home' && hash.length === 0) && anchor.classList.add('active'));
 detectActiveNavigationAnchor();
 
