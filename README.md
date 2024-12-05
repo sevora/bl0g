@@ -1,9 +1,9 @@
-# portfolio &middot; ![Twitter Follow](https://img.shields.io/twitter/follow/ralphlouisgopez?style=social) ![GitHub repo file count](https://img.shields.io/github/directory-file-count/sevora/portfolio)
-Sevora's portfolio. UNLICENSED. All rights reserved.
-
+# bl0g.pro
 ## Overview
-This is the portfolio website of Sevora ([@ralphlouisgopez](https://twitter.com/ralphlouisgopez)) made from pure code. The source code is written in ES6 thus a webpack transpiler was set up in order to maximize compatibility. The current theme being a "professional" theme is designed with the concepts of mobile-first and progressive enhancement. The visual design aspect is written with mobile in mind first and are adjusted for larger devices using media queries second. Progressive enhancement means that the interactive features implemented through scripting are an enhancement rather than a requirement. The website will completely work even without the scripts instead of breaking or being inaccessible altogether which most modern applications do.
+This is a blog site done as a project for one of our classes. In here, we talk about our interests be it in sports, shows, and philosophy. The website was written as a single-page application from scratch with [TypeScript](https://www.typescriptlang.org/) while [Vite](https://vite.dev/) handles the bundling and works along with transpilation. Please check it out, I know it'll be interesting.
 
-## Installation
-- `npm install --dev` - to install all the dependencies for the transpiler setup. 
+## Commands
+These commands can be figured out by learning [Node.js](https://nodejs.org/)
+- `npm install` - to install all the dependencies for the transpiler setup. 
 - `npm run build` - to transpile the source code inside the js directory and save results to assets bundle folder.
+- `npm run dev` - to run the development server.
