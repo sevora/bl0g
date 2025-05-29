@@ -8,7 +8,7 @@ type ChromaKey = [number, number, number];
  * @param threshold ranging from 0-1 adjusting sensitivity of chroma-keying.
  */
 function attachChromaKey(video: HTMLVideoElement, canvas: HTMLCanvasElement, key: ChromaKey, threshold: number) {
-    const context = canvas.getContext('2d', { willReadFrequently: true });
+    const context = canvas.getContext('2d', { willReadFrequently: true })!;
     const [keyR, keyG, keyB] = key;
 
     /**

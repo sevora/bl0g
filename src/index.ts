@@ -34,7 +34,7 @@ const { navigateRoute } = setupSinglePage(onSetupPage, (page, firstLoad) => {
 function handleClickCard(event: MouseEvent) {
     event.stopPropagation();
     const card = event.currentTarget as HTMLElement;
-    navigateRoute(card.dataset.displayPage);
+    navigateRoute(card.dataset.displayPage!);
     
     /**
      * This ensures that no navigation anchor appears to be clicked as that
@@ -46,7 +46,7 @@ function handleClickCard(event: MouseEvent) {
     );
 }
 
-document.querySelectorAll('.card').forEach(card => card.addEventListener('click', handleClickCard));
+document.querySelectorAll('.card').forEach(card => (card as HTMLElement).addEventListener('click', handleClickCard));
 
 /**
  * This detects the active navigation anchor through the scroll and activates
@@ -81,7 +81,7 @@ detectActiveNavigationAnchor();
  * This is a special button, for all intents and purposes, this may be unnecessary.
  * But hey we want to have some fun.
  */
-const specialButton = document.querySelector('#special-button');
+const specialButton = document.querySelector('#special-button') as HTMLButtonElement;
 const specialCanvas = document.querySelector('#special-canvas') as HTMLCanvasElement;
 const specialVideo = document.querySelector('#special-video') as HTMLVideoElement;
 

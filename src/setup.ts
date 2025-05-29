@@ -6,9 +6,6 @@ const space = document.querySelector('#space') as HTMLElement;
  * These are the transitions used for the effects.
  */
 const transitions: { [key: string]: () => void } = {
-    /**
-     * 
-     */
     'darkness': function() {
         document.documentElement.style.setProperty('--background-color', '#000');
         document.documentElement.style.setProperty('--foreground-color', '#f9f0f0');
@@ -27,7 +24,7 @@ const transitions: { [key: string]: () => void } = {
 /**
  * We also detect all transition timeouts.
  */
-let transitionTimeouts: NodeJS.Timeout[] = [];
+let transitionTimeouts: number[] = [];
 
 /**
  * We disable on FirefoxMobile as canvas is not 
@@ -43,7 +40,7 @@ export function onSetupPage(page: HTMLElement) {
     const video = page.querySelector('video[data-chroma-key]') as HTMLVideoElement;
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
     const duration = page.dataset.transitionDelay;
-    const transition = transitions[page.dataset.transitionFunction];
+    const transition = transitions[page.dataset.transitionFunction!];
 
     if (video && canvas) {
         attachChromaKey(video, canvas, [0, 255, 0], 0.75);
@@ -84,7 +81,7 @@ export function onSetupPage(page: HTMLElement) {
 export function onNavigateRoute(page: HTMLElement, firstLoad?: boolean) {
     const video = page.querySelector('video[data-chroma-key]') as HTMLVideoElement;
     const canvas = page.querySelector('canvas[data-chroma-key]') as HTMLCanvasElement;
-    const transition = transitions[page.dataset.transitionFunction];
+    const transition = transitions[page.dataset.transitionFunction!];
 
     document.documentElement.removeAttribute('style');
     

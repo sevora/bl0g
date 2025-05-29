@@ -18,7 +18,7 @@ export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => voi
     function scanForPages() {
         let result: { [id: string]: HTMLElement } = {};
         document.querySelectorAll('.page').forEach(post =>
-            result[(post as HTMLElement).dataset.route.toLowerCase()] = post as HTMLElement
+            result[(post as HTMLElement).dataset.route!.toLowerCase()] = post as HTMLElement
         );
         return result;
     }
@@ -32,7 +32,7 @@ export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => voi
         const page = pages[route.toLowerCase()];
         if (!page) return;
         
-        history.pushState({ scrollY: window.scrollY }, null, `${route}`);
+        history.pushState({ scrollY: window.scrollY }, "", `${route}`);
 
         /**
          * Hide all the other pages and make the current page appear.
