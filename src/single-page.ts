@@ -32,7 +32,7 @@ export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => voi
         const page = pages[route.toLowerCase()];
         if (!page) return;
         
-        history.pushState({ scrollY: window.scrollY }, "", `${route}`);
+        history.pushState({ scrollY: window.scrollY }, "", `#${route}`);
 
         /**
          * Hide all the other pages and make the current page appear.
@@ -54,11 +54,13 @@ export default function setupSinglePage(onSetupPage?: (page: HTMLElement) => voi
      * Improve this by scrolling to previous y-level if there is any. 
      */
     function loadCorrectPageFromRoute(event?: PopStateEvent) {
-        const { pathname } = window.location;
-        const page = pages[pathname];
+        let { hash } = window.location;
+        hash = hash.replace("#", "");
+        
+        const page = pages[hash];
 
         if (page)
-            navigateRoute(pathname, true);
+            navigateRoute(hash, true);
 
         if (event?.state && event?.state.scrollY)
             window.scrollTo(0, event.state.scrollY);

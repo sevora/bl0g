@@ -53,7 +53,7 @@ export function onSetupPage(page: HTMLElement) {
             if (!duration) return;
              
             const id = setTimeout(function () {
-                if (transition && window.location.pathname == page.dataset.route)
+                if (transition && window.location.hash.replace("#", "") == page.dataset.route)
                     transition();
                 }, parseFloat(duration)
             );
