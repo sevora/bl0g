@@ -95,3 +95,17 @@ specialVideo.addEventListener('play', () => {
 specialVideo.addEventListener('ended', () => {
     specialCanvas.style.display = 'none';
 });
+
+/**
+ * Need to manually define a popstate event listener
+ * to handle the back button from an existing post.
+ */
+window.addEventListener("popstate", () => {
+    let { hash } = window.location;
+    hash = hash.replace("#", "");
+
+    if (["posts", "writers", "about"].includes(hash))
+        navigateRoute("/", false);
+    
+    console.log(hash);
+})
