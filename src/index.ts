@@ -104,7 +104,7 @@ window.addEventListener("popstate", () => {
     let { hash } = window.location;
     hash = hash.replace("#", "");
 
-    if (["posts", "writers", "about"].includes(hash))
+    if (["posts", "writers", "about"].includes(hash) || hash.length === 0)
         navigateRoute("/", false);
     
     console.log(hash);
